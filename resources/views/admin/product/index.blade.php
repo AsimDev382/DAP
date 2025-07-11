@@ -76,7 +76,7 @@
                                     <span>No Image</span>
                                 @endif
                             </td>
-                            <td><a href="{{ route('product.brand.profile', $product->brand_id) }}">{{ $product->brand->brand_name }}</a></td>
+                            <td>{{ $product->brand->brand_name }}</td>
                             <td>{{ $product->company->company_name }}</td>
                             <td>{{ $product->case->count() }}</td>
                             <td>{{ $product->approved_count }}</td>

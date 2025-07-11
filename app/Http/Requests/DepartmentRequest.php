@@ -26,7 +26,7 @@ class DepartmentRequest extends FormRequest
             'head_name' => ['required', 'string', 'max:255'],
             'location' => ['required', 'string'],
             'company_id' => ['required', 'string'],
-            'sub_department_id' => ['required', 'string'],
+            // 'sub_department_id' => ['required', 'string'],
         ];
     }
 }

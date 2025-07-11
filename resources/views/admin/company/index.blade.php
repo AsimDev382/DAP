@@ -61,7 +61,7 @@
 
                         <tr class="table-card-row">
                             <td>{{ $key + 1 }}</td>
-                            <td>{{ $company->company_name }}</td>
+                            <td><a href="{{ route('company.view', $company->id) }}">{{ $company->company_name }}</a></td>
                             <td>
                                 @if($company->company_logo)
                                     <img src="{{ asset('storage/'.$company->company_logo) }}" class="" style="height: 20px; width: 30px;" alt="...">

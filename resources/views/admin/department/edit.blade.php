@@ -26,21 +26,6 @@
                 </div>
             </div>
 
-            <div class="col-md-12">
-                <div class="mt-3">
-                    <label class="eighteenblack mb-2">Sub Department*</label>
-                    <select name="sub_department_id" class="form-control" id="">
-                        <option selected disabled>Select Sub Department</option>
-                        @foreach ($sub_departments as $sub_department)
-                            <option value="{{ $sub_department->id }}" {{ $sub_department->id == $department->sub_department_id ? 'selected' : '' }}>{{ $sub_department->sub_name }}</option>
-                        @endforeach
-                    </select>
-                    @error('sub_department_id')
-                        <div class="text-danger">{{ $message }}</div>
-                    @enderror
-                </div>
-            </div>
-
             <div class="col-md-4">
                 <div class="my-3">
                     <label class="eighteenblack mb-2">Department Name*</label>
@@ -81,7 +66,7 @@
                     </a>
                 </div>
                 <div class="col-md-6 text-end">
-                     <button type="button" class="btn btn-cancel me-2">Cancel</button>
+                     <a href="{{ route('department.index') }}" class="btn btn-cancel me-2">Cancel</a>
                     <button type="button" class="btn btn-primary px-5 py-2" data-bs-toggle="modal" data-bs-target="#confirmSubmitModal">
                         Submit
                     </button>

@@ -12,8 +12,23 @@
             </div>
 
             <div class="col-md-12">
+                <div class="my-3">
+                    <label class="eighteenblack mb-2">Department*</label>
+                    <select name="department_id" class="form-control" id="">
+                        <option selected disabled>Select Department</option>
+                        @foreach ($departments as $department)
+                            <option value="{{ $department->id }}" {{ old('sub_department_id') == $department->id ? 'selected' : '' }}>{{ $department->name }}</option>
+                        @endforeach
+                    </select>
+                    @error('sub_department_id')
+                        <div class="text-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+            </div>
+
+            <div class="col-md-12">
                 <div class="mt-3">
-                    <label class="eighteenblack mb-2">Department Name*</label>
+                    <label class="eighteenblack mb-2">Sub Department Name*</label>
                     <input type="text" name="sub_name" class="form-control" value="{{ old('sub_name') }}" placeholder="Enter Department Name">
                     @error('sub_name')
                         <div class="text-danger">{{ $message }}</div>
@@ -23,7 +38,7 @@
 
             <div class="col-md-12">
                 <div class="my-3">
-                    <label class="eighteenblack mb-2">Department Location*</label>
+                    <label class="eighteenblack mb-2">Sub Department Location*</label>
                     <input type="text" name="sub_location" class="form-control" value="{{ old('sub_location') }}" placeholder="Enter Department Location">
                     @error('sub_location')
                         <div class="text-danger">{{ $message }}</div>
@@ -38,7 +53,7 @@
                 <div class="col-md-4">
                 </div>
                 <div  class="col-md-6 text-end">
-                    <button type="button" class="btn btn-cancel me-2">Cancel</button>
+                    <a href="{{ route('sub-department.index') }}" class="btn btn-cancel me-2">Cancel</a>
                     <button type="button" class="btn btn-primary px-5 py-2" data-bs-toggle="modal" data-bs-target="#confirmSubmitModal">
                         Submit
                     </button>

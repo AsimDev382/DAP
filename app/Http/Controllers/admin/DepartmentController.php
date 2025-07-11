@@ -16,12 +16,6 @@ class DepartmentController extends Controller implements HasMiddleware
     public static function middleware(): array
     {
         return [
-
-            // new Middleware('permission:department', only: ['index']),
-            // new Middleware('permission:department', only: ['create']),
-            // new Middleware('permission:department', only: ['destroy']),
-            // new Middleware('permission:department', only: ['edit']),
-
             new Middleware('permission:view department', only: ['index']),
             new Middleware('permission:create department', only: ['create']),
             new Middleware('permission:edit department', only: ['edit']),
@@ -43,8 +37,8 @@ class DepartmentController extends Controller implements HasMiddleware
     public function create()
     {
         $companies = Company::all();
-        $sub_department = SubDepartment::all();
-        return view('admin.department.create', compact('companies', 'sub_department'));
+
+        return view('admin.department.create', compact('companies'));
     }
 
     /**
@@ -57,7 +51,6 @@ class DepartmentController extends Controller implements HasMiddleware
         $department->head_name = $request->head_name;
         $department->location = $request->location;
         $department->company_id = $request->company_id;
-        $department->sub_department_id = $request->sub_department_id;
 
         $department->save();
         if($request->action == 'SubDepartment'){

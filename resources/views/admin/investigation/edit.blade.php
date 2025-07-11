@@ -55,8 +55,12 @@
                         <label class="dropzone" style="   height: 120px;" id="dropzoneImg">
                             <input type="file" name="document" id="logoInput" accept="image/*">
                             <div id="placeholderImg">
+                                @if($investigation->document)
                                 <img src="{{ asset('storage/' . $investigation->document) }}" alt="Upload Icon"
-                                    class="dropzone-icon">
+                                class="dropzone-icon">
+                                @else
+                                <img src="{{ asset('admin/images/Icon.svg') }}" alt="Upload Icon" class="dropzone-icon">
+                                @endif
                                 <div class="label_title">Upload Investigation <br>Logo here</div>
                             </div>
                             <img id="previewImg" style="display: none;" />

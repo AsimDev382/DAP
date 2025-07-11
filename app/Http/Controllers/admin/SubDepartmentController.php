@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SubDepartmentRequest;
+use App\Models\Department;
 use App\Models\SubDepartment;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;
@@ -32,7 +33,7 @@ class SubDepartmentController extends Controller implements HasMiddleware
      */
     public function index()
     {
-        $departments = SubDepartment::orderBy('id', 'desc')->get();
+        $departments = SubDepartment::with('department')->orderBy('id', 'desc')->get();
         return view('admin.subDepartment.index', compact('departments'));
     }
 
@@ -41,7 +42,9 @@ class SubDepartmentController extends Controller implements HasMiddleware
      */
     public function create()
     {
-        return view('admin.subDepartment.create');
+        $departments = Department::all();
+
+        return view('admin.subDepartment.create', compact('departments'));
     }
 
     /**
@@ -52,6 +55,7 @@ class SubDepartmentController extends Controller implements HasMiddleware
         $department = new SubDepartment();
         $department->sub_name = $request->sub_name;
         $department->sub_location = $request->sub_location;
+        $department->department_id = $request->department_id;
         $department->save();
         return to_route('sub-department.index')->with('success', 'Sub Department Added Successfully');
     }
@@ -63,8 +67,10 @@ class SubDepartmentController extends Controller implements HasMiddleware
     public function edit(string $id)
     {
         // dd($department);
-        $department = SubDepartment::find($id);
-        return view('admin.subDepartment.edit', compact('department'));
+        $sub_department = SubDepartment::find($id);
+        $departments = Department::all();
+
+        return view('admin.subDepartment.edit', compact('departments', 'sub_department'));
     }
 
     /**
@@ -75,6 +81,7 @@ class SubDepartmentController extends Controller implements HasMiddleware
         $department = SubDepartment::find($id);
         $department->sub_name = $request->sub_name;
         $department->sub_location = $request->sub_location;
+        $department->department_id = $request->department_id;
         $department->update();
         return to_route('sub-department.index')->with('success', 'Sub Department Updated Successfully');
     }
@@ -84,8 +91,9 @@ class SubDepartmentController extends Controller implements HasMiddleware
      */
     public function show(string $id)
     {
-        $department = SubDepartment::find($id);
-        $department->delete();
+        $sub_department = SubDepartment::find($id);
+        $sub_department->delete();
+
         return to_route('sub-department.index')->with('success', 'Sub Department Deleted successfully');
     }
 
@@ -94,7 +102,7 @@ class SubDepartmentController extends Controller implements HasMiddleware
     public function sortSubDepartment(Request $request)
     {
         $sortFilter = $request->get('sortFilter');
-        $subdepartment = SubDepartment::orderBy('id', $sortFilter)->get();
+        $subdepartment = SubDepartment::with('department')->orderBy('id', $sortFilter)->get();
 
         return response()->json($subdepartment);
     }

@@ -24,22 +24,9 @@
                     @enderror
                 </div>
             </div>
-            <div class="col-md-12">
-                <div class="my-3">
-                    <label class="eighteenblack mb-2">Sub Department*</label>
-                    <select name="sub_department_id" class="form-control" id="">
-                        <option selected disabled>Select Sub Department</option>
-                        @foreach ($sub_department as $department)
-                            <option value="{{ $department->id }}" {{ old('sub_department_id') == $department->id ? 'selected' : '' }}>{{ $department->sub_name }}</option>
-                        @endforeach
-                    </select>
-                    @error('sub_department_id')
-                        <div class="text-danger">{{ $message }}</div>
-                    @enderror
-                </div>
-            </div>
+
             <div class="col-md-4">
-                <div class="mb-3">
+                <div class="mt-3">
                     <label class="eighteenblack mb-2">Department Name*</label>
                     <input type="text" name="name" class="form-control" value="{{ old('name') }}" placeholder="Enter Department Name">
                     @error('name')
@@ -48,7 +35,7 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="mb-3">
+                <div class="mt-3">
                     <label class="eighteenblack mb-2">Department Head Name*</label>
                     <input type="text" name="head_name" class="form-control" value="{{ old('head_name') }}" placeholder="Enter Department Head Name">
                     @error('head_name')
@@ -57,7 +44,7 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="mb-3">
+                <div class="mt-3">
                     <label class="eighteenblack mb-2">Department Location*</label>
                     <input type="text" name="location" class="form-control" value="{{ old('location') }}" placeholder="Enter Department Location">
                     @error('location')
@@ -68,7 +55,7 @@
 
 
 
-            <div class="col-md-12 mb-3 ">
+            <div class="col-md-12 mt-4">
              <div class="row d-flex justify-content-between">
                 <div class="col-md-4">
 
@@ -79,7 +66,7 @@
                     </a>
                 </div>
                 <div class="col-md-4 text-end">
-                    <button type="button" class="btn btn-cancel me-2">Cancel</button>
+                    <a href="{{ route('department.index') }}" class="btn btn-cancel me-2">Cancel</a>
                     <button type="button" class="btn btn-primary px-5 py-2" data-bs-toggle="modal" data-bs-target="#confirmSubmitModal">
                         Submit
                     </button>

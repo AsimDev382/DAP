@@ -92,7 +92,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/product/sort', [ProductController::class, 'sortProduct'])->name('product.sort');
     Route::get('/product/profile/{id}', [ProductController::class, 'productProfile'])->name('product.profile');
     // Brand Profile
-    Route::get('/product/brand-profile/{id}', [ProductController::class, 'productBrandProfile'])->name('product.brand.profile');
+    Route::get('/brand-profile/{id}', [ProductController::class, 'productBrandProfile'])->name('product.brand.profile');
 
     // Case
     Route::get('/case/index', [CaseController::class, 'caseIndex'])->name('case.index');
@@ -114,6 +114,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/investigation/create', [InvestigationController::class, 'investigationCreate'])->name('investigation.create');
     Route::post('/investigation/store', [InvestigationController::class, 'investigationStore'])->name('investigation.store');
     Route::get('/investigation/edit/{id}', [InvestigationController::class, 'investigationEdit'])->name('investigation.edit');
+    Route::get('/investigation/view/{id}', [InvestigationController::class, 'investigationView'])->name('investigation.view');
     Route::post('/investigation/update/{id}', [InvestigationController::class, 'investigationUpdate'])->name('investigation.update');
     Route::get('/investigation/destroy/{id}', [InvestigationController::class, 'investigationDestroy'])->name('investigation.destroy');
     Route::get('/investigation/sort', [InvestigationController::class, 'sortInvestigation'])->name('investigation.sort');

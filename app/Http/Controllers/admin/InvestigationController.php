@@ -91,6 +91,18 @@ class InvestigationController extends Controller implements HasMiddleware
 
         return view('admin.investigation.edit', compact('companies', 'brands', 'investigation', 'products', 'cases', 'users'));
     }
+    public function investigationView($id)
+    {
+        $investigation = Investigation::with('user')->where('id', $id)->first();
+        // dd($investigation);
+        $companies = Company::all();
+        $brands = Brand::all();
+        $products = Product::all();
+        $cases = CaseManagement::all();
+        $users = User::all();
+
+        return view('admin.investigation.view', compact('companies', 'brands', 'investigation', 'products', 'cases', 'users'));
+    }
 
 
     public function investigationUpdate(InvestigationRequest $request, $id)

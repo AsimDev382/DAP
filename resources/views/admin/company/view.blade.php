@@ -13,7 +13,7 @@
                     @if($company->company_logo)
                     <div style="height: 100px; widht: 100px;"> <img src="{{ asset('storage/'.$company->company_logo) }}" class="rounded" style="object-fit: contain;height: 100px; widht: 200px;" alt="UserImg"></div>
                     @else
-                    <div><img src="{{ asset('admin//images/hilallogo.svg') }}" class="img-fluid" alt="..."></div>
+                    <div>No Image</div>
                     @endif
                     <div class="ms-2">
                         <h6 class=" sixteenblackk pt-4">Company Name</h6>
@@ -125,8 +125,8 @@
                             <td>{{ $user->designation }}</td>
                             <td>{{ $user->user_phone }}</td>
                             <td>{{ $user->email }}</td>
-                            <td>{{ $user->department->name }}</td>
-                            <td>{{ $user->subDepartment->sub_name }}</td>
+                            <td>{{ $user->department->name ?? '' }}</td>
+                            <td>{{ $user->subDepartment->sub_name ?? '' }}</td>
                             <td>{{ $user->user_location }}</td>
                             <td>{{ @$user->company->company_name }}</td>
                             <td>{{ $user->created_at }}</td>
@@ -172,7 +172,13 @@
                             <tr class="table-card-row">
                                 <td>{{ $key + 1 }}</td>
                                 <td>{{ $brand->brand_name }}</td>
-                                <td><img src="{{ asset('storage/'.$brand->brand_logo) }}" class="" style="height: 20px; width: 30px;" alt="..."></td>
+                                <td>
+                                    @if($brand->brand_logo)
+                                        <img src="{{ asset('storage/'.$brand->brand_logo) }}" style="height: 20px; width: 30px;" alt="...">
+                                    @else
+                                        <span>No Image</span>
+                                    @endif
+                                </td>
                                 <td>{{ $brand->company->company_email ?? '' }}</td>
                                 <td>{{ $brand->case->count() }}</td>
                                 <td>{{ $brand->approved_count }}</td>

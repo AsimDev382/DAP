@@ -12,7 +12,7 @@ class Department extends Model
     }
     public function subDepartment()
     {
-        return $this->belongsTo(SubDepartment::class);
+        return $this->hasMany(Department::class);
     }
 
     public function task()

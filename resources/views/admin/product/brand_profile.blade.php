@@ -10,7 +10,13 @@
         <div class="col-md-12 card p-4 mt-3">
             <div class="row d-flex justify-content-between">
                 <div class="col-md-6 d-flex">
-                    <div ><img src="{{ asset('storage/'. $brand->brand_logo) }}" class="img-fluid divimg" alt="..."></div>
+                    <div>
+                        @if($brand->brand_logo)
+                            <img src="{{ asset('storage/'. $brand->brand_logo) }}" class="img-fluid divimg" alt="...">
+                        @else
+                            <span>No Image</span>
+                        @endif
+                    </div>
                     <div class="ms-2">
                         <h6 class="sixteenblackk pt-3">Brand Name</h6>
                         <h1 class="eighteenblacke">{{ $brand->brand_name }}</h1>
@@ -52,19 +58,18 @@
                 <div class="col-md-3">
                     <div>
                             {{-- <iframe src="{{ asset('admin/images/pdf.png') }}"> --}}
+                                @if($brand->brand_pdf)
                                 <a href="{{ asset('storage/'.$brand->brand_pdf) }}" target="_blank">
                                     <img class="pdff" src="{{ asset('admin/images/pdf.png') }}">
                                 </a>
+                                  @else
+                                  <span>No PDF</span>
+                                @endif
                             {{-- </iframe> --}}
                         {{-- <img src="{{ asset('admin/images/pdf.png') }}" class="img-fluid" alt="..."> --}}
                     </div>
                 </div>
-                <div class="col-md-3 d-flex align-items-center">
-                    <div>
-                        <p class="sixteenblackk m-0">Attorney Name</p>
-                        <p class="eighteenblacke">{{ $brand->brand_name }}</p>
-                    </div>
-                </div>
+
                 <div class="col-md-3 d-flex align-items-center">
                     <div>
                         <p class="sixteenblackk m-0">Attorney Date</p>

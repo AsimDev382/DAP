@@ -66,7 +66,7 @@
 
                         <tr class="table-card-row">
                             <td>{{ $key + 1 }}</td>
-                            <td>{{ $investigation->auto_id }}</td>
+                            <td><a href="{{ route('investigation.view', $investigation->id) }}">{{ $investigation->auto_id }}</a></td>
                             <td>{{ $investigation->case->case_name }}</td>
                             <td>{{ $investigation->case_type }}</td>
                             <td>{{ @$investigation->product->product_name }}</td>

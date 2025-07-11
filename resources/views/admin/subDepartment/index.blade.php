@@ -49,6 +49,7 @@
                         <tr>
                             <th>Sr #</th>
                             <th>Department Name</th>
+                            <th>Sub Department Name</th>
                             <th>Department Location</th>
                             <th>Action</th>
                         </tr>
@@ -58,6 +59,7 @@
 
                         <tr class="table-card-row">
                             <td>{{ $key + 1 }}</td>
+                            <td>{{ $department->department->name }}</td>
                             <td>{{ $department->sub_name }}</td>
                             <td>{{ $department->sub_location }}</td>
 
@@ -206,6 +208,7 @@ $(document).ready(function() {
                         $('#subDepartmentTableBody').append(`
                             <tr>
                                 <td>${index + 1}</td>
+                                <td>${subdepartment.department.name}</td>
                                 <td>${subdepartment.sub_name}</td>
                                 <td>${subdepartment.sub_location}</td>
                                 <td>

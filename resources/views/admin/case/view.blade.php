@@ -62,6 +62,7 @@
                 </div>
             </div>
             <hr>
+            {{-- @dd($product) --}}
             <div class="row mt-3">
                 <div class="col-md-12">
                     <div class="row">
@@ -274,12 +275,7 @@
                                             <h1 class="fourteen">{{ $case->task }}</h1>
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
-                                        <div>
-                                            <h6 class="twelve pt-4">Flag </h6>
-                                            <h1 class="fourteen "> {{ $case->flag }}</h1>
-                                        </div>
-                                    </div>
+
                                 </div>
                             </div>
                         </div>
@@ -294,6 +290,7 @@
             <div class="row mt-3 d-flex justify-content-between">
 
                 <div class="col-md-3">
+                    {{-- <p class="m-0 twenty">Product Image</p> --}}
                     <div>
                         <img src="{{ asset('admin/images/pdf.svg') }}" class="img-fluid" alt="...">
                     </div>

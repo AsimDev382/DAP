@@ -24,6 +24,7 @@ class SubDepartmentRequest extends FormRequest
         return [
             'sub_name' => ['required', 'string', 'max:255'],
             'sub_location' => ['required', 'string'],
+            'department_id' => ['required', 'string'],
         ];
     }
 }

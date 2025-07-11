@@ -50,8 +50,8 @@
                             <th>Department Name</th>
                             <th>Department Location</th>
                             <th>Department Head Name</th>
-                            <th>Sub Departments Name</th>
-                            <th>Sub Departments Location</th>
+                            {{-- <th>Sub Departments Name</th>
+                            <th>Sub Departments Location</th> --}}
                             <th>Company Name</th>
                             <th>Status</th>
                             <th>Action</th>
@@ -65,8 +65,8 @@
                             <td>{{ $department->name }}</td>
                             <td>{{ $department->location }}</td>
                             <td>{{ $department->head_name }}</td>
-                            <td>{{ $department->subDepartment->sub_name }}</td>
-                            <td>{{ $department->subDepartment->sub_location }}</td>
+                            {{-- <td>{{ $department->subDepartment->sub_name }}</td>
+                            <td>{{ $department->subDepartment->sub_location }}</td> --}}
 
                             <td>{{ @$department->company->company_name }}</td>
 
@@ -243,8 +243,7 @@ $(document).ready(function() {
                                 <td>${department.name}</td>
                                 <td>${department.location}</td>
                                 <td>${department.head_name}</td>
-                                <td>${subName}</td>
-                                <td>${subLocation}</td>
+
                                 <td>${companyName}</td>
                                 <td>${statusBadge}</td>
                                 <td>
@@ -259,6 +258,8 @@ $(document).ready(function() {
                 } else {
                     $('#departmentTableBody').append('<tr><td colspan="12" class="text-center">No records found.</td></tr>');
                 }
+                //<td>${subName}</td>
+                //<td>${subLocation}</td>
             }
         });
     }

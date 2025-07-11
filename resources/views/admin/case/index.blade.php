@@ -62,7 +62,7 @@
                     <tbody id="caseTableBody">
                         @forelse ($cases as $case)
                         <tr>
-                            <td>{{ $case->auto_id }}</td>
+                            <td><a href="{{ route('case.view', $case->id) }}">{{ $case->auto_id }}</a></td>
                             {{-- <td>
                                 <a href="{{ route('case.view', $case->id) }}">{{ $case->case_name }}</a>
                             </td> --}}

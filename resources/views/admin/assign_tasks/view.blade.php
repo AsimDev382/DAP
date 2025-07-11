@@ -102,7 +102,11 @@
             <div class="row mt-5">
                 <div class="col-md-3">
                     <div>
+                        @if($assignTask->document)
                         <img src="{{ asset('storage/'. $assignTask->document) }}" class="img-fluid" alt="...">
+                        @else
+                            <span>No Image</span>
+                        @endif
                     </div>
                 </div>
             </div>

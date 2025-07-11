@@ -107,13 +107,14 @@ class CompanyController extends Controller implements HasMiddleware
     {
         $company = Company::find($id);
 
-
         $users = User::with('company')
         ->whereDoesntHave('roles', function ($query) {
             $query->where('name', 'superadmin');
         })
         ->orderBy('id', 'desc')
         ->get();
+
+        // dd($users);
 
 
         $brands = Brand::withCount([
