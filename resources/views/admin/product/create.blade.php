@@ -54,9 +54,9 @@
                         <label class="eighteenblack mb-2">Brand Name*</label>
                         <select name="brand_id" id="brand_id" class="form-select" aria-label="Default select example">
                             <option selected disabled>Select Brand</option>
-                            @foreach ($brands as $brand)
+                            {{-- @foreach ($brands as $brand)
                             <option value="{{ $brand->id }}">{{ $brand->brand_name }}</option>
-                            @endforeach
+                            @endforeach --}}
                         </select>
                         @error('brand_id')
                         <div class="text-danger">{{ $message }}</div>
@@ -258,6 +258,7 @@
         // When company changes: load brands
         $('#company_id').on('change', function() {
             let companyId = $(this).val();
+            alert('ok')
             $('#brand_id').html('<option selected disabled>Select Brand</option>');
             $('#product_id').html('<option selected disabled>Select Product</option>');
 
