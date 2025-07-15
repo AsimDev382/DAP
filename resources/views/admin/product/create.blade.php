@@ -258,7 +258,6 @@
         // When company changes: load brands
         $('#company_id').on('change', function() {
             let companyId = $(this).val();
-            alert('ok')
             $('#brand_id').html('<option selected disabled>Select Brand</option>');
             $('#product_id').html('<option selected disabled>Select Product</option>');
 
